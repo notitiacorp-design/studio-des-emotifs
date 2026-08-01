@@ -108,6 +108,34 @@ textarea{min-height:160px;resize:vertical}
 /* ——— Pied de page ——— */
 footer{padding:2.5rem 0;border-top:1px solid var(--ligne);font-size:.9rem;font-weight:400;color:var(--encre)}
 .pied{display:grid;gap:.6rem}
+
+/* ——— Animations éditoriales ——— */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.revealed{opacity:1;transform:translateY(0)}
+
+/* Header — devient plus opaque au scroll */
+header.scrolled{background:rgba(250,248,244,.98)}
+
+/* Parallax visuels */
+.visuel img,.portrait-cadre img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
+
+/* Boutons — transition plus longue, plus tactile */
+.bouton{transition:background .4s cubic-bezier(.22,1,.36,1),color .4s,transform .35s}
+.bouton:hover{transform:translateY(-1px)}
+.bouton:active{transform:translateY(0)}
+
+/* Lien contact — hover discret */
+.infos-contact a,.infos a{transition:color .35s}
+.infos-contact a:hover,.infos a:hover{color:var(--vert)}
+
+/* Input focus plus lent */
+input:focus,textarea:focus{transition:border-color .5s}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal{transition:none}
+  .visuel img,.portrait-cadre img{transition:none}
+  .bouton{transition:none}
+}
 </style>
 </head>
 <body>
@@ -160,13 +188,13 @@ footer{padding:2.5rem 0;border-top:1px solid var(--ligne);font-size:.9rem;font-w
   <!-- ACCOMPAGNEMENTS -->
   <section id="accompagnements">
     <div class="wrap">
-      <div class="tete-section">
+      <div class="tete-section reveal">
         <p class="etiquette">Mes accompagnements</p>
         <h2>Trois pratiques du toucher et du lien</h2>
       </div>
 
       <!-- 1 — Haptonomie -->
-      <article class="accompagnement">
+      <article class="accompagnement reveal">
         <figure class="visuel">
           <!-- Photo "style nuages" à générer par Cindy -->
           <div class="attente">Visuel haptonomie —<br>photo à venir</div>
@@ -188,7 +216,7 @@ footer{padding:2.5rem 0;border-top:1px solid var(--ligne);font-size:.9rem;font-w
       </article>
 
       <!-- 2 — Réflexologie -->
-      <article class="accompagnement inverse">
+      <article class="accompagnement inverse reveal">
         <figure class="visuel">
           <div class="attente">Visuel réflexologie —<br>photo à venir</div>
         </figure>
@@ -206,7 +234,7 @@ footer{padding:2.5rem 0;border-top:1px solid var(--ligne);font-size:.9rem;font-w
       </article>
 
       <!-- 3 — Câlinothérapie -->
-      <article class="accompagnement">
+      <article class="accompagnement reveal">
         <figure class="visuel">
           <!-- Photo de la funambule générée par Cindy -->
           <div class="attente">Visuel câlinothérapie —<br>photo de la funambule</div>
@@ -234,7 +262,7 @@ footer{padding:2.5rem 0;border-top:1px solid var(--ligne);font-size:.9rem;font-w
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
-      <div class="contact">
+      <div class="contact reveal">
         <div class="tete-section">
           <p class="etiquette">Contact</p>
           <h2>Écrire au Studio</h2>
@@ -273,6 +301,37 @@ footer{padding:2.5rem 0;border-top:1px solid var(--ligne);font-size:.9rem;font-w
     <div>© Le Studio des Émotifs — Tous droits réservés.</div>
   </div>
 </footer>
+
+<script>
+/* ——— Animations éditoriales — 3 effets seulement ——— */
+(function(){
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed') })
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'})
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+
+  let ticking = false
+  window.addEventListener('scroll',()=>{
+    if(ticking) return
+    requestAnimationFrame(()=>{
+      const y = window.scrollY
+      document.querySelector('header').classList.toggle('scrolled', y > 30)
+      // Parallax léger visuels
+      document.querySelectorAll('.accompagnement .visuel,.portrait-cadre').forEach(el=>{
+        const rect = el.getBoundingClientRect()
+        const vis = rect.top < window.innerHeight && rect.bottom > 0
+        if(!vis) return
+        const speed = el.closest('.accompagnement')?.classList.contains('inverse') ? 6 : -6
+        const shift = ((rect.top + rect.height/2) / window.innerHeight - .5) * speed
+        const img = el.querySelector('img')
+        if(img) img.style.transform = `translateY(${shift}px)`
+      })
+      ticking = false
+    })
+    ticking = true
+  },{passive:true})
+})()
+</script>
 
 </body>
 </html>
