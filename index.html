@@ -1,285 +1,278 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Le Studio des Émotifs</title>
-  <meta name="description" content="Le Studio des Émotifs — accompagnements autour du toucher et du lien à L'Isle-Adam." />
-  <style>
-    :root {
-      --bg: #f7f4ee;
-      --surface: #fcfaf6;
-      --surface-2: #f3eee6;
-      --border: rgba(44,36,29,.12);
-      --text: #2c241d;
-      --muted: #71675c;
-      --primary: #6c8572;
-      --primary-dark: #586e5d;
-      --primary-light: #dfe8de;
-      --radius: 1.5rem;
-      --shadow: 0 8px 24px rgba(60,45,24,.06);
-      --shadow-md: 0 18px 48px rgba(60,45,24,.1);
-      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Le Studio des Émotifs — L'Isle-Adam, Val d'Oise</title>
+<meta name="description" content="Le Studio des Émotifs — Ici est une invitation à la tendresse. Haptonomie, réflexologie bébé émotionnelle et câlinothérapie à L'Isle-Adam, Val d'Oise." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blanc:#faf8f4;
+  --beige:#efe9e0;
+  --beige-2:#e6ddd1;
+  --vert:#5f7355;
+  --vert-fonce:#46543f;
+  --encre:#33302a;
+  --encre-douce:#6d675c;
+  --ligne:rgba(51,48,42,.14);
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Jost', 'Helvetica Neue', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--blanc);color:var(--encre);font-family:var(--sans);font-weight:300;font-size:1.05rem;line-height:1.75;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,calc(100% - 2.5rem));margin-inline:auto}
+.etiquette{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--vert)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;color:var(--encre)}
+h1{font-size:clamp(2.6rem,6vw,4.6rem)}
+h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+h3{font-size:clamp(1.4rem,2.2vw,1.8rem)}
+em{font-style:italic}
 
-    /* Header */
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(247,244,238,.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-    .brand { font-size: 1.25rem; font-weight: 600; }
-    .brand small { display: block; font-size: .75rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
-    nav { display: flex; gap: .5rem; flex-wrap: wrap; }
-    nav a {
-      padding: .6rem 1rem; border-radius: 999px;
-      color: var(--muted); font-size: .95rem;
-      transition: background .2s;
-    }
-    nav a:hover { background: var(--surface-2); color: var(--text); }
+/* ——— En-tête ——— */
+header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne)}
+.tete{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+.identite .nom{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:.02em}
+.identite .lieu{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--encre-douce)}
+nav{display:flex;gap:.25rem}
+nav a{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1rem;position:relative;color:var(--encre-douce);transition:color .25s}
+nav a::after{content:'';position:absolute;left:1rem;right:1rem;bottom:.35rem;height:1px;background:var(--vert);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+nav a:hover{color:var(--encre)}
+nav a:hover::after{transform:scaleX(1)}
 
-    /* Hero */
-    .hero { padding: 5rem 0 3rem; }
-    .hero-grid { display: grid; gap: 2.5rem; align-items: center; }
-    @media (min-width: 860px) {
-      .hero-grid { grid-template-columns: 1.15fr .85fr; }
-    }
-    .eyebrow {
-      font-size: .8rem; text-transform: uppercase; letter-spacing: .2em;
-      color: var(--muted); margin-bottom: 1rem;
-    }
-    h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; font-weight: 600; max-width: 12ch; }
-    .lead { color: var(--muted); max-width: 55ch; margin-top: 1.25rem; font-size: 1.05rem; }
-    .actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.75rem; }
-    .btn {
-      padding: .9rem 1.5rem; border-radius: 999px;
-      display: inline-flex; align-items: center; justify-content: center;
-      transition: all .2s; border: 1px solid transparent;
-    }
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-dark); }
-    .btn-secondary { border-color: var(--border); background: var(--surface); }
-    .btn-secondary:hover { background: var(--surface-2); }
-    .hero-card {
-      background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      box-shadow: var(--shadow-md);
-    }
-    .hero-card img { width: 100%; border-radius: 1rem; object-fit: cover; aspect-ratio: 4/5; }
+/* ——— Hero ——— */
+.hero{padding:clamp(4rem,9vw,7.5rem) 0 clamp(3rem,6vw,5rem)}
+.hero-grid{display:grid;gap:2.5rem}
+.hero .etiquette{margin-bottom:1.4rem}
+.hero h1{max-width:13ch}
+.hero .accroche{margin-top:1.6rem;max-width:46ch;font-size:1.15rem;color:var(--encre-douce)}
+.hero .actions{margin-top:2.4rem;display:flex;gap:1rem;flex-wrap:wrap}
+.bouton{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.9rem;border-radius:999px;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-weight:400;transition:background .25s,color .25s,border-color .25s}
+.bouton.plein{background:var(--vert);color:var(--blanc)}
+.bouton.plein:hover{background:var(--vert-fonce)}
+.bouton.contour{border:1px solid var(--ligne);color:var(--encre)}
+.bouton.contour:hover{border-color:var(--vert);color:var(--vert)}
+.portrait-cadre{background:var(--beige);border-radius:999px 999px 1.2rem 1.2rem;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative}
+.portrait-cadre img{width:100%;height:100%;object-fit:cover}
+.portrait-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;color:var(--encre-douce);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.05fr .75fr;align-items:center;gap:4rem}}
 
-    /* Meta strip */
-    .meta { padding: 1rem 0; }
-    .meta-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-    .meta-item {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 1rem; padding: 1rem;
-    }
-    .meta-item span { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .4rem; }
+/* ——— Bandeau infos ——— */
+.infos{border-block:1px solid var(--ligne);padding:1.6rem 0}
+.infos ul{list-style:none;display:flex;flex-wrap:wrap;gap:1.2rem 3rem;font-size:.85rem;letter-spacing:.06em;color:var(--encre-douce)}
+.infos strong{display:block;font-family:var(--sans);font-weight:400;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--vert);margin-bottom:.2rem}
 
-    /* Sections */
-    section { padding: 4rem 0; }
-    .section-head { margin-bottom: 2.5rem; }
-    .section-head h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 600; margin-bottom: 1rem; }
-    .section-head p { color: var(--muted); max-width: 60ch; }
+/* ——— Sections ——— */
+section{padding:clamp(3.5rem,7vw,6rem) 0}
+.tete-section{max-width:60ch;margin-bottom:3rem}
+.tete-section .etiquette{margin-bottom:1rem}
+.tete-section p{margin-top:1.1rem;color:var(--encre-douce)}
 
-    /* Cards */
-    .cards { display: grid; gap: 1.5rem; }
-    @media (min-width: 860px) { .cards { grid-template-columns: repeat(3, 1fr); } }
-    .card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.75rem;
-      box-shadow: var(--shadow);
-    }
-    .card.soft { background: linear-gradient(180deg, #e8ede7, var(--surface)); }
-    .card h3 { font-size: 1.35rem; margin-bottom: .5rem; }
-    .card .subtitle { color: var(--muted); font-size: .95rem; margin-bottom: 1rem; }
-    .pills { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
-    .pill {
-      padding: .35rem .8rem; border-radius: 999px;
-      font-size: .75rem; text-transform: uppercase; letter-spacing: .05em;
-      background: var(--primary-light); color: var(--primary);
-    }
-    .card ul { list-style: none; margin-top: 1rem; }
-    .card li { padding-left: 1.1rem; position: relative; color: var(--muted); margin-bottom: .5rem; }
-    .card li::before { content: '•'; position: absolute; left: 0; color: var(--primary); }
+/* ——— Accompagnements ——— */
+.accompagnement{display:grid;gap:2.5rem;padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid var(--ligne)}
+.accompagnement:first-of-type{border-top:none;padding-top:0}
+.accompagnement .num{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--vert);letter-spacing:.08em}
+.accompagnement .texte>p+p{margin-top:1rem}
+.accompagnement .texte p{max-width:62ch}
+.accompagnement .details{margin-top:1.8rem;display:grid;gap:1rem;border-left:1px solid var(--ligne);padding-left:1.4rem}
+.accompagnement .details div{font-size:.95rem;color:var(--encre-douce)}
+.accompagnement .details strong{display:block;font-weight:400;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--vert);margin-bottom:.15rem}
+.accompagnement .visuel{border-radius:1.2rem;overflow:hidden;background:var(--beige)}
+.accompagnement .visuel img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+.accompagnement .visuel .attente{aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;color:var(--encre-douce);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+.attente-badge{display:inline-block;margin-top:1.4rem;padding:.4rem .9rem;border:1px dashed var(--vert);border-radius:999px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vert)}
+@media(min-width:900px){
+  .accompagnement{grid-template-columns:.9fr 1.1fr;align-items:start;gap:4rem}
+  .accompagnement.inverse{grid-template-columns:1.1fr .9fr}
+  .accompagnement.inverse .visuel{order:2}
+}
 
-    /* Contact */
-    .contact-grid { display: grid; gap: 1.5rem; }
-    @media (min-width: 860px) { .contact-grid { grid-template-columns: 1.1fr .9fr; } }
-    .form-shell, .info-box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.75rem;
-    }
-    form { display: grid; gap: 1rem; }
-    label { display: grid; gap: .4rem; font-size: .9rem; }
-    input, textarea {
-      width: 100%; padding: .9rem 1rem;
-      border: 1px solid var(--border); border-radius: .75rem;
-      background: var(--surface-2); font: inherit;
-    }
-    textarea { min-height: 150px; resize: vertical; }
-    .small { font-size: .85rem; color: var(--muted); }
+/* ——— Contact ——— */
+.contact{background:var(--beige);border-radius:1.5rem;padding:clamp(2rem,5vw,4rem)}
+.contact-grid{display:grid;gap:2.5rem}
+@media(min-width:900px){.contact-grid{grid-template-columns:1fr 1fr}}
+form{display:grid;gap:1.2rem}
+label{display:grid;gap:.4rem;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--encre-douce)}
+input,textarea{width:100%;background:var(--blanc);border:1px solid var(--ligne);border-radius:.7rem;padding:.95rem 1.1rem;font:inherit;font-size:1rem;color:var(--encre)}
+input:focus,textarea:focus{outline:none;border-color:var(--vert)}
+textarea{min-height:160px;resize:vertical}
+.infos-contact p+p{margin-top:1.4rem}
+.infos-contact strong{display:block;font-weight:400;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--vert);margin-bottom:.3rem}
+.note{margin-top:1.6rem;font-size:.88rem;color:var(--encre-douce);border-top:1px solid var(--ligne);padding-top:1.2rem}
 
-    /* Footer */
-    footer { padding: 2rem 0 3rem; border-top: 1px solid var(--border); }
-    footer .legal { font-size: .85rem; color: var(--muted); margin-bottom: .5rem; }
-
-    @media (max-width: 720px) {
-      .header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      nav { width: 100%; }
-      nav a { flex: 1; text-align: center; }
-    }
-  </style>
+/* ——— Pied de page ——— */
+footer{padding:2.5rem 0;border-top:1px solid var(--ligne);font-size:.85rem;color:var(--encre-douce)}
+.pied{display:grid;gap:.6rem}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container header-inner">
-      <div class="brand">
-        Le Studio des Émotifs
-        <small>L'Isle-Adam · Val d'Oise</small>
-      </div>
-      <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#accompagnements">Accompagnements</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero" id="accueil">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Accompagnement par le toucher</p>
-          <h1>Ici est une invitation à la tendresse.</h1>
-          <p class="lead">Un accompagnement du lien grâce aux pouvoirs du toucher et des belles intentions. Le Studio des Émotifs propose des séances au cabinet, dans un cadre doux, élégant et profondément respectueux.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#contact">Prendre contact</a>
-            <a class="btn btn-secondary" href="#accompagnements">Découvrir les accompagnements</a>
+<header>
+  <div class="wrap tete">
+    <div class="identite">
+      <div class="nom">Le Studio des Émotifs</div>
+      <div class="lieu">L'Isle-Adam · Val d'Oise</div>
+    </div>
+    <nav aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <a href="#accompagnements">Mes accompagnements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ACCUEIL -->
+  <section class="hero" id="accueil">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="etiquette">Le Studio des Émotifs</p>
+        <h1>Ici est une invitation à la <em>tendresse</em>.</h1>
+        <p class="accroche">Un accompagnement du lien grâce aux pouvoirs du toucher et des belles intentions.</p>
+        <div class="actions">
+          <a class="bouton plein" href="#contact">Me contacter</a>
+          <a class="bouton contour" href="#accompagnements">Mes accompagnements</a>
+        </div>
+      </div>
+      <figure class="portrait-cadre">
+        <!-- REMPLACER par la photo de portrait de Cindy -->
+        <div class="portrait-placeholder">Portrait —<br>photo à fournir</div>
+      </figure>
+    </div>
+  </section>
+
+  <div class="infos">
+    <div class="wrap">
+      <ul>
+        <li><strong>Le cabinet</strong>1 A rue Mellet, L'Isle-Adam</li>
+        <li><strong>Horaires</strong>Samedi et dimanche, 9h – 18h</li>
+        <li><strong>Rendez-vous</strong>Par email ou DM Instagram — pas de réservation en ligne</li>
+        <li><strong>Instagram</strong><a href="https://www.instagram.com/le.studio.des.emotifs?igsh=ZzFmMzZrejA4aTU3" target="_blank" rel="noopener">@le.studio.des.emotifs</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ACCOMPAGNEMENTS -->
+  <section id="accompagnements">
+    <div class="wrap">
+      <div class="tete-section">
+        <p class="etiquette">Mes accompagnements</p>
+        <h2>Trois pratiques du toucher et du lien</h2>
+      </div>
+
+      <!-- 1 — Haptonomie -->
+      <article class="accompagnement">
+        <figure class="visuel">
+          <!-- Photo "style nuages" à générer par Cindy -->
+          <div class="attente">Visuel haptonomie —<br>photo à venir</div>
+        </figure>
+        <div class="texte">
+          <p class="num">01</p>
+          <h3>Haptonomie — méthode Hapto bien-naître®</h3>
+          <p style="margin-top:.4rem;color:var(--encre-douce)"><em>Dès le 4ème mois de grossesse — accompagner le lien, avant et après la naissance.</em></p>
+          <p style="margin-top:1.2rem">Au fil des 9 mois, imaginez un monde où les mères porteraient les enfants et les pères porteraient les mères. Imaginez un monde où une grossesse serait véritablement vécue à deux, affectivement, accompagnée par des pères qui sauraient comment se rendre présents.</p>
+          <p>Un accompagnement vers l'unité du couple et la rencontre avec votre bébé plusieurs mois avant sa naissance grâce au toucher doux et à vos belles intentions, afin que chaque parent trouve sa place dans la construction de sa famille à chaque étape de cette grossesse, à l'accouchement et après.</p>
+          <p>Une science de l'affectivité qui permet à l'enfant de venir au monde avec les meilleures prédispositions possibles, déjà riche de beaucoup d'amour et confiant dans sa sécurité affective. Une approche à décliner dans beaucoup d'autres domaines de la vie.</p>
+          <div class="details">
+            <div><strong>Déroulement</strong>Jusqu'à 5 séances avant l'accouchement, jusqu'à 3 séances post-accouchement. Toutes les séances sont à réaliser en couple.</div>
+            <div><strong>Durée</strong>1h par séance, sauf la première qui dure 1h30. Les séances peuvent démarrer dès le 4ème mois de grossesse.</div>
+            <div><strong>Tarif</strong>80€ la séance, au cabinet.</div>
+            <div><strong>Formation</strong>Hapto bien-naître, à l'École du bien-naître à Suresnes, avec Albane Templier, sage-femme.</div>
           </div>
         </div>
-        <aside class="hero-card">
-          <img src="assets/portrait.jpg" alt="Portrait de Cindy Lasaga" />
-        </aside>
-      </div>
-      <div class="container meta">
-        <div class="meta-grid">
-          <div class="meta-item"><span>Lieu</span>1 A rue Mellet, L'Isle-Adam</div>
-          <div class="meta-item"><span>Horaires</span>Samedi et dimanche, 9h–18h</div>
-          <div class="meta-item"><span>Rendez-vous</span>Par email ou DM Instagram</div>
-          <div class="meta-item"><span>Approche</span>Douce, élégante, respectueuse</div>
-        </div>
-      </div>
-    </section>
+      </article>
 
-    <section id="accompagnements">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Mes accompagnements</p>
-          <h2>Trois espaces pour accueillir le lien, le corps et l'émotion.</h2>
-          <p>Chaque accompagnement possède son propre rythme, son cadre et sa durée.</p>
+      <!-- 2 — Réflexologie -->
+      <article class="accompagnement inverse">
+        <figure class="visuel">
+          <div class="attente">Visuel réflexologie —<br>photo à venir</div>
+        </figure>
+        <div class="texte">
+          <p class="num">02</p>
+          <h3>Réflexologie Bébé émotionnelle® et Enfant</h3>
+          <p style="margin-top:.4rem;color:var(--encre-douce)"><em>Jusqu'à 11 ans.</em></p>
+          <span class="attente-badge">Contenu en cours de rédaction</span>
+          <div class="details">
+            <div><strong>Détail de l'activité</strong>Texte à fournir.</div>
+            <div><strong>Durée</strong>À préciser.</div>
+            <div><strong>Tarif</strong>À préciser.</div>
+          </div>
         </div>
-        <div class="cards">
-          <article class="card soft">
-            <h3>Haptonomie</h3>
-            <p class="subtitle">Méthode Hapto bien-naître® — dès le 4ème mois de grossesse.</p>
-            <p>Accompagner le lien, avant et après la naissance, afin que chaque parent trouve sa place dans la construction de sa famille.</p>
-            <div class="pills">
-              <span class="pill">1h à 1h30</span>
-              <span class="pill">80€ la séance</span>
-            </div>
-            <ul>
-              <li>Jusqu'à 5 séances avant l'accouchement, puis jusqu'à 3 après.</li>
-              <li>Première séance de 1h30, puis séances d'1h.</li>
-              <li>Formation à l'École du bien-naître à Suresnes.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Réflexologie bébé émotionnelle®</h3>
-            <p class="subtitle">Jusqu'à 11 ans.</p>
-            <p>Bloc prêt à recevoir le contenu détaillé, la durée d'une séance et le tarif.</p>
-            <div class="pills">
-              <span class="pill">Jusqu'à 11 ans</span>
-              <span class="pill">Contenu à finaliser</span>
-            </div>
-            <ul>
-              <li>Descriptif complet à ajouter.</li>
-              <li>Durée et tarif à compléter.</li>
-            </ul>
-          </article>
-          <article class="card soft">
-            <h3>Câlinothérapie</h3>
-            <p class="subtitle">Pour les femmes et les couples, dans un cadre non sexuel.</p>
-            <p>Une invitation au réconfort, au relâchement et à la reconnaissance de soi, à travers des gestes de tendresse.</p>
-            <div class="pills">
-              <span class="pill">1h</span>
-              <span class="pill">70€ la séance</span>
-            </div>
-            <ul>
-              <li>Premier échange téléphonique nécessaire.</li>
-              <li>Conversation et rappel du cadre avant la séance.</li>
-              <li>Séance individuelle ou en couple possible.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+      </article>
 
-    <section id="contact">
-      <div class="container contact-grid">
-        <div class="form-shell">
-          <p class="eyebrow">Contact</p>
+      <!-- 3 — Câlinothérapie -->
+      <article class="accompagnement">
+        <figure class="visuel">
+          <!-- Photo de la funambule générée par Cindy -->
+          <div class="attente">Visuel câlinothérapie —<br>photo de la funambule</div>
+        </figure>
+        <div class="texte">
+          <p class="num">03</p>
+          <h3>Câlinothérapie</h3>
+          <p style="margin-top:.4rem;color:var(--encre-douce)"><em>Pour les femmes et les couples.</em></p>
+          <p style="margin-top:1.2rem">Imaginez un monde où le besoin de tendresse pourrait être un motif de consultation. Des câlins, des caresses, des enveloppements, des bercements &amp; des confidences du cœur à votre guise. Un toucher bienveillant qui devient thérapeutique pour le corps et l'esprit.</p>
+          <p>Rien de sexuel, rien d'érotique ou de déshabillé, rien qui ne manque de respect à votre intimité, mais simplement mes bras pour vous permettre de déposer ce que vous portez de trop lourd, de trop faux, de trop vite, de trop dur, de trop présent pour les autres et de ne pas assez pour vous.</p>
+          <p>J'accueille dans mes bras toutes celles qui traversent une épreuve de vie, une fragilité du cœur, une fatigue du corps ou qui veulent simplement être entourées de douceur. Offrez-vous une pause pour vous sentir portée, soutenue, dorlotée, regardée, aimée — pour vous reposer dans les bras de quelqu'un qui ne vous veut que du bien.</p>
+          <p>Une invitation au réconfort et à la reconnaissance de tout ce qu'il y a de beau en vous. Un répit pour toutes les funambules de la vie.</p>
+          <div class="details">
+            <div><strong>Avant la séance</strong>Un premier échange téléphonique est nécessaire.</div>
+            <div><strong>Déroulement</strong>Conversation, rappel du cadre non sexuel et consentement, puis câlins, caresses, bercements, enveloppements &amp; confidences du cœur à votre guise. Vos sentiments avant votre départ… jusqu'à la prochaine fois.</div>
+            <div><strong>Durée &amp; tarif</strong>1h — 70€ la séance, au cabinet.</div>
+            <div><strong>Pour qui</strong>Séance individuelle avec les femmes. Accompagnement à la tendresse et à la qualité de présence d'un couple possible.</div>
+            <div><strong>Formation</strong>Câlinothérapie avec Fanny Gaye.</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div class="tete-section">
+          <p class="etiquette">Contact</p>
           <h2>Écrire au Studio</h2>
-          <form action="mailto:le.studio.des.emotifs@gmail.com" method="post" enctype="text/plain">
-            <label>Nom
-              <input type="text" name="nom" placeholder="Votre nom" required>
-            </label>
-            <label>Email
-              <input type="email" name="email" placeholder="vous@exemple.fr" required>
-            </label>
-            <label>Message
-              <textarea name="message" placeholder="Décrivez votre demande ou vos questions."></textarea>
-            </label>
-            <button class="btn btn-primary" type="submit">Envoyer un message</button>
-          </form>
-          <p class="small" style="margin-top:1rem">Le formulaire ouvre votre messagerie pour envoyer le message.</p>
+          <p>La prise de rendez-vous se fait uniquement par email ou par DM sur Instagram.</p>
         </div>
-        <aside class="info-box">
-          <p class="eyebrow">Informations</p>
-          <h2>Venir ou écrire</h2>
-          <div class="pills" style="margin-top:1rem">
-            <span class="pill">Samedi · dimanche</span>
-            <span class="pill">9h — 18h</span>
+        <div class="contact-grid">
+          <form action="mailto:le.studio.des.emotifs@gmail.com" method="post" enctype="text/plain">
+            <label>Votre nom
+              <input type="text" name="Nom" required>
+            </label>
+            <label>Votre email
+              <input type="email" name="Email" required>
+            </label>
+            <label>Votre message
+              <textarea name="Message" required></textarea>
+            </label>
+            <button class="bouton plein" type="submit">Envoyer le message</button>
+          </form>
+          <div class="infos-contact">
+            <p><strong>Adresse du cabinet</strong>1 A rue Mellet<br>L'Isle-Adam, Val d'Oise</p>
+            <p><strong>Horaires</strong>Samedi et dimanche, de 9h à 18h</p>
+            <p><strong>Email</strong><a href="mailto:le.studio.des.emotifs@gmail.com">le.studio.des.emotifs@gmail.com</a></p>
+            <p><strong>Instagram</strong><a href="https://www.instagram.com/le.studio.des.emotifs?igsh=ZzFmMzZrejA4aTU3" target="_blank" rel="noopener">@le.studio.des.emotifs</a></p>
+            <p class="note">Les avis Google pourront être intégrés ici, avec affichage limité à une sélection choisie par la praticienne.</p>
           </div>
-          <p><strong>Adresse</strong><br>1 A rue Mellet<br>L'Isle-Adam</p>
-          <p style="margin-top:1rem"><strong>Instagram</strong><br><a href="https://www.instagram.com/le.studio.des.emotifs" target="_blank" rel="noopener">@le.studio.des.emotifs</a></p>
-          <p style="margin-top:1rem"><strong>Prise de contact</strong><br>Par email ou DM Instagram.</p>
-        </aside>
+        </div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="legal">Le Studio des Émotifs — L'Isle-Adam, Val d'Oise.</div>
-      <div class="legal">SIRET et CGV : emplacement prévu.</div>
-      <div class="legal">Tous droits réservés.</div>
     </div>
-  </footer>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap pied">
+    <div>Le Studio des Émotifs — L'Isle-Adam, Val d'Oise · www.studiodesemotifs.com</div>
+    <div>SIRET : à compléter · CGV : à compléter</div>
+    <div>© Le Studio des Émotifs — Tous droits réservés.</div>
+  </div>
+</footer>
+
 </body>
 </html>
