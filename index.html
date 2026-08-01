@@ -37,13 +37,20 @@ em{font-style:normal}
 /* ——— En-tête ——— */
 header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne);box-shadow:0 1px 0 var(--ligne)}
 .tete{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
-.identite .nom{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:.02em}
+.identite{min-width:0}
+.identite .nom{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:.02em;white-space:nowrap}
 .identite .lieu{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--encre-douce);font-weight:400}
-nav{display:flex;gap:.25rem}
-nav a{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;padding:.6rem 1rem;position:relative;color:var(--encre);transition:color .25s}
-nav a::after{content:'';position:absolute;left:1rem;right:1rem;bottom:.35rem;height:1px;background:var(--vert);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+nav{display:flex;gap:0}
+nav a{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;padding:.6rem .7rem;position:relative;color:var(--encre);transition:color .25s}
+nav a::after{content:'';position:absolute;left:.7rem;right:.7rem;bottom:.35rem;height:1px;background:var(--vert);transform:scaleX(0);transform-origin:left;transition:transform .25s}
 nav a:hover{color:var(--encre)}
 nav a:hover::after{transform:scaleX(1)}
+/* Header responsive — passe en pile sur mobile */
+@media(max-width:768px){
+  .tete{flex-direction:column;align-items:flex-start;gap:.6rem;padding:.8rem 0}
+  .identite .nom{font-size:1.1rem}
+  nav a{padding:.5rem .6rem;font-size:.72rem}
+}
 
 /* ——— Hero ——— */
 .hero{padding:clamp(4rem,9vw,7.5rem) 0 clamp(3rem,6vw,5rem)}
