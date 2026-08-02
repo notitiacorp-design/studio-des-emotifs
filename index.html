@@ -4,158 +4,174 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Le Studio des Émotifs — L'Isle-Adam, Val d'Oise</title>
-<meta name="description" content="Le Studio des Émotifs — Ici est une invitation à la tendresse. Haptonomie, réflexologie bébé émotionnelle et câlinothérapie à L'Isle-Adam, Val d'Oise." />
+<meta name="description" content="Le Studio des Émotifs — Haptonomie, réflexologie bébé émotionnelle et câlinothérapie à L'Isle-Adam, Val d'Oise." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blanc:#faf8f4;
-  --beige:#efe9e0;
-  --beige-2:#e6ddd1;
-  --vert:#3d4e38;
-  --vert-fonce:#2d3a2a;
-  --encre:#23201b;
-  --encre-douce:#4a443a;
-  --ligne:rgba(35,32,27,.16);
+  --cream:#faf8f4;
+  --cream-warm:#f3ede4;
+  --sand:#e8e0d4;
+  --green:#3d4e38;
+  --green-deep:#2d3a2a;
+  --ink:#23201b;
+  --ink-soft:#4a443a;
+  --ink-faint:#8a8276;
+  --rule:rgba(35,32,27,.12);
   --serif:'Cormorant Garamond', Georgia, serif;
-  --sans:'Jost', 'Helvetica Neue', sans-serif;
+  --sans:'Jost','Helvetica Neue',sans-serif;
+  --xs:4px;--sm:8px;--md:16px;--lg:24px;--xl:32px;--xxl:48px;--xxxl:64px;--huge:96px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--blanc);color:var(--encre);font-family:var(--sans);font-weight:300;font-size:1.05rem;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:1.05rem;line-height:1.75;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
+
 .wrap{width:min(1120px,calc(100% - 2.5rem));margin-inline:auto}
-.etiquette{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--vert)}
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;color:var(--encre)}
-h1{font-size:clamp(2.6rem,6vw,4.6rem)}
-h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
-h3{font-size:clamp(1.4rem,2.2vw,1.8rem)}
-em{font-style:normal}
+.etiquette{font-family:var(--sans);font-weight:500;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;color:var(--ink)}
+h1{font-size:clamp(2.6rem,6vw,4.8rem)}
+h2{font-size:clamp(1.8rem,3.4vw,2.8rem)}
+h3{font-size:clamp(1.35rem,2vw,1.7rem)}
+
+/* ——— Canvas particules ——— */
+#emotionalCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1}
+@media(prefers-reduced-motion:reduce){#emotionalCanvas{display:none}}
+main,header,footer{position:relative;z-index:1}
 
 /* ——— Header ——— */
-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne);box-shadow:0 1px 0 var(--ligne)}
-.tete{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);transition:background .4s}
+header.scrolled{background:rgba(250,248,244,.97);box-shadow:0 1px 8px rgba(35,32,27,.04)}
+.tete{display:flex;align-items:center;justify-content:space-between;gap:var(--md);padding:1rem 0}
 .identite{min-width:0}
-.identite .nom{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:.02em;white-space:nowrap}
-.identite .lieu{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--encre-douce);font-weight:400}
-nav{display:flex;gap:0}
-nav a{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;padding:.6rem .7rem;position:relative;color:var(--encre);transition:color .25s}
-nav a::after{content:'';position:absolute;left:.7rem;right:.7rem;bottom:.35rem;height:1px;background:var(--vert);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-nav a:hover{color:var(--encre)}
-nav a:hover::after{transform:scaleX(1)}
+.identite .nom{font-family:var(--serif);font-size:1.25rem;font-weight:600;letter-spacing:.01em;white-space:nowrap}
+.identite .lieu{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:400}
+nav{display:flex;gap:var(--xs)}
+nav a{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;padding:.5rem .6rem;position:relative;color:var(--ink-soft);transition:color .3s}
+nav a::after{content:'';position:absolute;left:.6rem;right:.6rem;bottom:.3rem;height:1px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+nav a:hover,nav a:focus-visible{color:var(--ink)}
+nav a:hover::after,nav a:focus-visible::after{transform:scaleX(1)}
+nav a:focus-visible{outline:2px solid var(--green);outline-offset:4px;border-radius:2px}
 @media(max-width:768px){
-  .tete{flex-direction:column;align-items:flex-start;gap:.6rem;padding:.8rem 0}
+  .tete{flex-direction:column;align-items:flex-start;gap:.5rem;padding:.75rem 0}
   .identite .nom{font-size:1.1rem}
-  nav a{padding:.5rem .6rem;font-size:.72rem}
+  nav a{padding:.45rem .55rem;font-size:.7rem}
 }
 
-/* ——— Hero ——— */
-.hero{padding:clamp(4rem,9vw,7.5rem) 0 clamp(2rem,4vw,3.5rem)}
-.hero-grid{display:grid;gap:2.5rem}
-.hero .etiquette{margin-bottom:1.4rem}
-.hero h1{max-width:13ch}
-.hero .accroche{margin-top:1.6rem;max-width:46ch;font-size:1.15rem;color:var(--encre);font-weight:300}
-.hero .actions{margin-top:2.4rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
-.bouton{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.9rem;border-radius:999px;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-weight:400;transition:background .25s,color .25s,border-color .25s,transform .35s}
-.bouton.plein{background:var(--vert);color:var(--blanc)}
-.bouton.plein:hover{background:var(--vert-fonce);transform:translateY(-1px)}
-.bouton.contour{border:1px solid var(--ligne);color:var(--encre)}
-.bouton.contour:hover{border-color:var(--vert);color:var(--vert);transform:translateY(-1px)}
-.bouton.insta{border:1px solid var(--ligne);color:var(--encre);padding:.8rem 1.4rem;gap:.5rem;font-size:.75rem}
-.bouton.insta:hover{border-color:var(--vert);color:var(--vert);transform:translateY(-1px)}
-.bouton.insta svg{width:18px;height:18px;flex-shrink:0}
-.portrait-cadre{background:var(--beige);border-radius:.6rem;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative}
-.portrait-cadre img{width:100%;height:100%;object-fit:cover}
-.portrait-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;color:var(--encre-douce);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
-.presentation-portrait{margin-top:1.5rem;font-size:.95rem;color:var(--encre-douce);max-width:48ch;font-style:italic;line-height:1.8;border-left:2px solid var(--vert);padding-left:1.5rem}
-@media(min-width:900px){.hero-grid{grid-template-columns:1.05fr .75fr;align-items:center;gap:4rem}}
+/* ——— Buttons ——— */
+.bouton{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.7rem;border-radius:999px;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400;transition:background .35s,color .35s,border-color .35s,transform .35s;cursor:pointer;border:none;font-family:var(--sans)}
+.bouton.plein{background:var(--green);color:var(--cream)}
+.bouton.plein:hover{background:var(--green-deep);transform:translateY(-1px)}
+.bouton.plein:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.bouton.plein:active{transform:translateY(0)}
+.bouton.contour{border:1px solid var(--rule);color:var(--ink);background:transparent}
+.bouton.contour:hover{border-color:var(--green);color:var(--green);transform:translateY(-1px)}
+.bouton.contour:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.bouton.insta{border:1px solid var(--rule);color:var(--ink-soft);padding:.75rem 1.3rem;gap:.4rem;font-size:.72rem;background:transparent}
+.bouton.insta:hover{border-color:var(--ink-soft);color:var(--ink);transform:translateY(-1px)}
+.bouton.insta:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.bouton.insta svg{width:16px;height:16px;flex-shrink:0}
 
-/* ——— Bande activités (NOUVEAU V2 — teaser rapide après hero) ——— */
-.bande-activites{padding:2.5rem 0;border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne);background:var(--beige)}
-.bande-titre{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vert);margin-bottom:1.2rem;font-weight:500}
-.liste-activites{list-style:none;display:flex;flex-wrap:wrap;gap:1.2rem 3.5rem}
-.liste-activites a{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--encre);border-bottom:1px solid transparent;transition:border-color .3s,color .3s}
-.liste-activites a:hover{color:var(--vert);border-color:var(--vert)}
-.liste-activites .fleche{font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;color:var(--vert);margin-left:.3rem;opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s;display:inline-block}
+/* ——— Hero ——— */
+.hero{padding:clamp(4rem,9vw,7.5rem) 0 clamp(2.5rem,5vw,4rem)}
+.hero-grid{display:grid;gap:var(--xxxl)}
+.hero .etiquette{margin-bottom:1.2rem}
+.hero h1{max-width:13ch}
+.hero .accroche{margin-top:1.4rem;max-width:44ch;font-size:1.1rem;color:var(--ink-soft);font-weight:300}
+.hero .actions{margin-top:2.2rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+.portrait-cadre{background:var(--cream-warm);border-radius:.5rem;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.portrait-cadre img{width:100%;height:100%;object-fit:cover}
+.portrait-placeholder{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--ink-faint);text-align:center;padding:var(--xxl)}
+.bio-portrait{margin-top:1.2rem;font-size:.92rem;color:var(--ink-soft);max-width:42ch;line-height:1.8;border-left:2px solid var(--green);padding-left:1.2rem;font-style:italic}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.05fr .75fr;align-items:center;gap:var(--huge)}}
+
+/* ——— Bande activités ——— */
+.bande-activites{padding:2.2rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--cream-warm)}
+.bande-titre{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;font-weight:500}
+.liste-activites{list-style:none;display:flex;flex-wrap:wrap;gap:.8rem 3rem}
+.liste-activites a{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--ink);border-bottom:1px solid transparent;transition:border-color .35s,color .35s}
+.liste-activites a:hover,.liste-activites a:focus-visible{color:var(--green);border-color:var(--green)}
+.liste-activites a:focus-visible{outline:2px solid var(--green);outline-offset:4px;border-radius:2px}
+.liste-activites .fleche{font-family:var(--sans);font-size:.65rem;letter-spacing:.08em;color:var(--green);margin-left:.25rem;opacity:0;transform:translateX(-4px);transition:opacity .35s,transform .35s;display:inline-block}
 .liste-activites a:hover .fleche{opacity:1;transform:translateX(0)}
 
 /* ——— Sections ——— */
-section{padding:clamp(3.5rem,7vw,6rem) 0}
-.tete-section{max-width:60ch;margin-bottom:3rem}
-.tete-section .etiquette{margin-bottom:1rem}
-.tete-section p{margin-top:1.1rem;color:var(--encre-douce)}
+section{padding:clamp(3.5rem,7vw,5.5rem) 0}
+.tete-section{max-width:56ch;margin-bottom:2.5rem}
+.tete-section .etiquette{margin-bottom:.8rem}
+.tete-section p{margin-top:1rem;color:var(--ink-soft);max-width:48ch}
 
 /* ——— Accompagnements ——— */
-.accompagnement{display:grid;gap:2.5rem;padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid var(--ligne)}
+.accompagnement{display:grid;gap:var(--xxxl);padding:clamp(2.5rem,5vw,3.5rem) 0;border-top:1px solid var(--rule)}
 .accompagnement:first-of-type{border-top:none;padding-top:0}
-.accompagnement .num{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--vert);letter-spacing:.08em}
-.accompagnement .texte>p+p{margin-top:1.4rem}
-.accompagnement .texte p{max-width:62ch}
-.accompagnement .details{margin-top:1.8rem;display:grid;gap:1rem;border-left:1px solid var(--ligne);padding-left:1.4rem}
-.accompagnement .details div{font-size:.95rem;color:var(--encre)}
-.accompagnement .details strong{display:block;font-weight:600;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--vert);margin-bottom:.25rem}
-.accompagnement .visuel{border-radius:1.2rem;overflow:hidden;background:var(--beige)}
+.accompagnement .num{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--green);letter-spacing:.06em}
+.accompagnement .texte p{max-width:60ch}
+.accompagnement .texte>p+p{margin-top:1.2rem}
+.accompagnement .details{margin-top:1.6rem;display:grid;gap:.9rem;border-left:1px solid var(--rule);padding-left:1.3rem}
+.accompagnement .details div{font-size:.92rem;color:var(--ink)}
+.accompagnement .details strong{display:block;font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.2rem}
+.accompagnement .visuel{border-radius:1rem;overflow:hidden;background:var(--cream-warm)}
 .accompagnement .visuel img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
-.accompagnement .visuel .attente{aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;color:var(--encre-douce);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:var(--beige-2);opacity:.7}
-.attente-badge{display:inline-block;margin-top:1.4rem;padding:.4rem .9rem;border:1px dashed var(--vert);border-radius:999px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vert)}
+.accompagnement .visuel .attente{aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--xxl);font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--ink-faint);background:var(--cream-warm)}
+.status-badge{display:inline-block;margin-top:1.2rem;padding:.35rem .8rem;border:1px solid var(--rule);border-radius:999px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
 @media(min-width:900px){
-  .accompagnement{grid-template-columns:.85fr 1.15fr;align-items:start;gap:4rem}
+  .accompagnement{grid-template-columns:.85fr 1.15fr;align-items:start;gap:var(--huge)}
   .accompagnement.inverse{grid-template-columns:1.15fr .85fr}
   .accompagnement.inverse .visuel{order:2}
 }
 
-/* ——— Cabinet (NOUVEAU V2 — section dédiée en fin de page) ——— */
-.cabinet-grid{display:grid;gap:2rem}
-.cabinet-photos{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.cabinet-photos figure{border-radius:1rem;overflow:hidden;background:var(--beige);aspect-ratio:4/3}
+/* ——— Cabinet ——— */
+.cabinet-grid{display:grid;gap:var(--xxxl)}
+.cabinet-photos{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cabinet-photos figure{border-radius:.8rem;overflow:hidden;background:var(--cream-warm);aspect-ratio:4/3}
 .cabinet-photos img{width:100%;height:100%;object-fit:cover}
-.cabinet-photos .attente{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;color:var(--encre-douce);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:var(--beige-2);opacity:.7}
-.cabinet-texte{margin-top:2rem;display:grid;gap:1.6rem}
-.cabinet-texte p{max-width:58ch;color:var(--encre);font-size:1.05rem}
-.cabinet-infos{display:flex;flex-wrap:wrap;gap:2rem 4rem;margin-top:.5rem}
-.cabinet-infos div{font-size:.95rem}
-.cabinet-infos strong{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vert);margin-bottom:.3rem;font-weight:600}
+.cabinet-photos .attente{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--xxl);font-family:var(--serif);font-size:.9rem;font-style:italic;color:var(--ink-faint)}
+.cabinet-texte p{max-width:52ch;color:var(--ink);font-size:1rem;line-height:1.85}
+.cabinet-infos{display:flex;flex-wrap:wrap;gap:1.5rem 3.5rem;margin-top:1.5rem}
+.cabinet-infos div{font-size:.92rem;color:var(--ink)}
+.cabinet-infos strong{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:.25rem;font-weight:600}
 @media(min-width:900px){
-  .cabinet-grid{grid-template-columns:1fr 1fr;align-items:start;gap:3rem}
+  .cabinet-grid{grid-template-columns:1fr 1fr;align-items:start}
   .cabinet-photos{order:2}
-  .cabinet-texte{margin-top:0}
 }
 
 /* ——— Contact ——— */
-.contact{background:var(--beige);border-radius:1.5rem;padding:clamp(2rem,5vw,4rem)}
-.contact-grid{display:grid;gap:2.5rem}
+.contact{background:var(--cream-warm);border-radius:1.2rem;padding:clamp(2rem,5vw,3.5rem)}
+.contact-grid{display:grid;gap:var(--xxxl)}
 @media(min-width:900px){.contact-grid{grid-template-columns:1fr 1fr}}
-form{display:grid;gap:1.2rem}
-label{display:grid;gap:.4rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--encre);font-weight:500}
-input,textarea,select{width:100%;background:var(--blanc);border:1px solid var(--ligne);border-radius:.7rem;padding:.95rem 1.1rem;font:inherit;font-size:1rem;color:var(--encre)}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--vert)}
-textarea{min-height:160px;resize:vertical}
-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%234a443a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center;padding-right:2.5rem;cursor:pointer}
-.infos-contact p+p{margin-top:1.4rem;color:var(--encre)}
-.infos-contact strong{display:block;font-weight:500;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vert);margin-bottom:.3rem}
-.note{margin-top:1.6rem;font-size:.9rem;color:var(--encre);border-top:1px solid var(--ligne);padding-top:1.2rem}
+form{display:grid;gap:1.1rem}
+label{display:grid;gap:.35rem;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:500}
+input,textarea,select{width:100%;background:var(--cream);border:1px solid var(--rule);border-radius:.6rem;padding:.85rem 1rem;font:inherit;font-size:.98rem;color:var(--ink);transition:border-color .4s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--green)}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-color:var(--green)}
+textarea{min-height:150px;resize:vertical}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%234a443a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer}
+.infos-contact p+p{margin-top:1.2rem;color:var(--ink)}
+.infos-contact strong{display:block;font-weight:500;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:.2rem}
+.infos-contact a{transition:color .3s}
+.infos-contact a:hover,.infos-contact a:focus-visible{color:var(--green)}
 
 /* ——— Footer ——— */
-footer{padding:2.5rem 0;border-top:1px solid var(--ligne);font-size:.9rem;font-weight:400;color:var(--encre)}
-.pied{display:grid;gap:.6rem}
+footer{padding:2.5rem 0;border-top:1px solid var(--rule);font-size:.88rem;color:var(--ink-faint)}
+.pied{display:grid;gap:.4rem}
 
-/* ——— Animations ——— */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+/* ——— Reveal ——— */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 .revealed{opacity:1;transform:translateY(0)}
-header.scrolled{background:rgba(250,248,244,.98)}
-.visuel img,.portrait-cadre img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
-input:focus,textarea:focus,select:focus{transition:border-color .5s}
 @media(prefers-reduced-motion:reduce){
   .reveal{transition:none}
   .visuel img,.portrait-cadre img{transition:none}
   .bouton{transition:none}
   .liste-activites .fleche{transition:none}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
 <body>
+
+<canvas id="emotionalCanvas"></canvas>
 
 <header>
   <div class="wrap tete">
@@ -165,7 +181,7 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
     </div>
     <nav aria-label="Navigation principale">
       <a href="#accueil">Accueil</a>
-      <a href="#accompagnements">Mes accompagnements</a>
+      <a href="#accompagnements">Accompagnements</a>
       <a href="#cabinet">Cabinet</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -173,12 +189,12 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
 </header>
 
 <main>
-  <!-- ACCUEIL / HERO -->
+  <!-- HERO -->
   <section class="hero" id="accueil">
     <div class="wrap hero-grid">
       <div>
         <p class="etiquette">Le Studio des Émotifs</p>
-        <h1>Ici est une invitation à la <em>tendresse</em>.</h1>
+        <h1>Ici est une invitation à la <span style="font-style:italic">tendresse</span>.</h1>
         <p class="accroche">Un accompagnement du lien grâce aux pouvoirs du toucher et des belles intentions.</p>
         <div class="actions">
           <a class="bouton plein" href="#contact">Me contacter</a>
@@ -191,64 +207,62 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
       </div>
       <div>
         <figure class="portrait-cadre">
-          <div class="portrait-placeholder">Portrait —<br>photo à fournir</div>
+          <div class="portrait-placeholder">Portrait de Cindy</div>
         </figure>
-        <p class="presentation-portrait">Texte de présentation à fournir par Cindy. Il viendra ici, sous la photo portrait, pour présenter son parcours et sa démarche.</p>
+        <p class="bio-portrait">Texte de présentation à venir. Cindy y racontera son parcours, sa démarche et ce qui l'a menée à ouvrir le Studio des Émotifs.</p>
       </div>
     </div>
   </section>
 
-  <!-- BANDE ACTIVITÉS (NOUVEAU V2) -->
-  <div class="bande-activites" id="activites-rapides">
+  <!-- BANDE ACTIVITÉS -->
+  <div class="bande-activites">
     <div class="wrap">
       <p class="bande-titre">Mes accompagnements</p>
       <ul class="liste-activites">
-        <li><a href="#haptonomie">Haptonomie — méthode Hapto bien-naître®<span class="fleche">→</span></a></li>
-        <li><a href="#reflexologie">Réflexologie Bébé émotionnelle® et Enfant<span class="fleche">→</span></a></li>
+        <li><a href="#haptonomie">Haptonomie — méthode Hapto bien-naître<span class="fleche">→</span></a></li>
+        <li><a href="#reflexologie">Réflexologie Bébé émotionnelle et Enfant<span class="fleche">→</span></a></li>
         <li><a href="#calinotherapie">Câlinothérapie<span class="fleche">→</span></a></li>
       </ul>
     </div>
   </div>
 
-  <!-- ACCOMPAGNEMENTS (détaillé) -->
+  <!-- ACCOMPAGNEMENTS -->
   <section id="accompagnements">
     <div class="wrap">
       <div class="tete-section reveal" style="margin-bottom:0">
         <h2>Trois pratiques du toucher et du lien</h2>
       </div>
 
-      <!-- 1 — Haptonomie -->
       <article class="accompagnement reveal" id="haptonomie">
         <figure class="visuel">
-          <div class="attente">Visuel haptonomie —<br>photo à venir</div>
+          <div class="attente">Mains entrelacées</div>
         </figure>
         <div class="texte">
           <p class="num">01</p>
-          <h3>Haptonomie — méthode Hapto bien-naître®</h3>
-          <p style="margin-top:.4rem;color:var(--encre-douce)">Dès le 4ème mois de grossesse — accompagner le lien, avant et après la naissance.</p>
+          <h3>Haptonomie — méthode Hapto bien-naître</h3>
+          <p style="margin-top:.3rem;color:var(--ink-soft)">Dès le 4ème mois de grossesse — accompagner le lien, avant et après la naissance.</p>
           <p style="margin-top:1.2rem">Au fil des 9 mois, imaginez un monde où les mères porteraient les enfants et les pères porteraient les mères. Imaginez un monde où une grossesse serait véritablement vécue à deux, affectivement, accompagnée par des pères qui sauraient comment se rendre présents.</p>
           <p>Un accompagnement vers l'unité du couple et la rencontre avec votre bébé plusieurs mois avant sa naissance grâce au toucher doux et à vos belles intentions, afin que chaque parent trouve sa place dans la construction de sa famille à chaque étape de cette grossesse, à l'accouchement et après.</p>
-          <p>Une science de l'affectivité qui permet à l'enfant de venir au monde avec les meilleures prédispositions possibles, déjà riche de beaucoup d'amour et confiant dans sa sécurité affective. Une approche à décliner dans beaucoup d'autres domaines de la vie.</p>
+          <p>Une science de l'affectivité qui permet à l'enfant de venir au monde avec les meilleures prédispositions possibles, déjà riche de beaucoup d'amour et confiant dans sa sécurité affective.</p>
           <div class="details">
             <div><strong>Pour qui</strong>Futurs parents, dès le 4ème mois de grossesse. Toutes les séances sont à réaliser en couple.</div>
             <div><strong>Déroulement</strong>Jusqu'à 5 séances avant l'accouchement, jusqu'à 3 séances post-accouchement.</div>
             <div><strong>Durée</strong>1h par séance, sauf la première qui dure 1h30.</div>
             <div><strong>Tarif</strong>80€ la séance, au cabinet.</div>
-            <div><strong>Formation</strong>Hapto bien-naître, à l'École du bien-naître à Suresnes, avec Albane Templier, sage-femme.</div>
+            <div><strong>Formation</strong>Hapto bien-naître, École du bien-naître à Suresnes, avec Albane Templier, sage-femme.</div>
           </div>
         </div>
       </article>
 
-      <!-- 2 — Réflexologie -->
       <article class="accompagnement inverse reveal" id="reflexologie">
         <figure class="visuel">
-          <div class="attente">Visuel réflexologie —<br>photo à venir</div>
+          <div class="attente">Pieds de bébé</div>
         </figure>
         <div class="texte">
           <p class="num">02</p>
-          <h3>Réflexologie Bébé émotionnelle® et Enfant</h3>
-          <p style="margin-top:.4rem;color:var(--encre-douce)">Jusqu'à 11 ans.</p>
-          <span class="attente-badge">Contenu en cours de rédaction</span>
+          <h3>Réflexologie Bébé émotionnelle et Enfant</h3>
+          <p style="margin-top:.3rem;color:var(--ink-soft)">Jusqu'à 11 ans.</p>
+          <span class="status-badge">Texte en cours de rédaction</span>
           <div class="details">
             <div><strong>Pour qui</strong>À préciser.</div>
             <div><strong>Déroulement</strong>Texte à fournir.</div>
@@ -258,23 +272,22 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
         </div>
       </article>
 
-      <!-- 3 — Câlinothérapie -->
       <article class="accompagnement reveal" id="calinotherapie">
         <figure class="visuel">
-          <div class="attente">Visuel câlinothérapie —<br>photo de la funambule</div>
+          <div class="attente">La funambule</div>
         </figure>
         <div class="texte">
           <p class="num">03</p>
           <h3>Câlinothérapie</h3>
-          <p style="margin-top:.4rem;color:var(--encre-douce)">Pour les femmes et les couples.</p>
-          <p style="margin-top:1.2rem">Imaginez un monde où le besoin de tendresse pourrait être un motif de consultation. Des câlins, des caresses, des enveloppements, des bercements &amp; des confidences du cœur à votre guise. Un toucher bienveillant qui devient thérapeutique pour le corps et l'esprit.</p>
+          <p style="margin-top:.3rem;color:var(--ink-soft)">Pour les femmes et les couples.</p>
+          <p style="margin-top:1.2rem">Imaginez un monde où le besoin de tendresse pourrait être un motif de consultation. Des câlins, des caresses, des enveloppements, des bercements et des confidences du cœur à votre guise. Un toucher bienveillant qui devient thérapeutique pour le corps et l'esprit.</p>
           <p>Rien de sexuel, rien d'érotique ou de déshabillé, rien qui ne manque de respect à votre intimité, mais simplement mes bras pour vous permettre de déposer ce que vous portez de trop lourd, de trop faux, de trop vite, de trop dur, de trop présent pour les autres et de ne pas assez pour vous.</p>
-          <p>J'accueille dans mes bras toutes celles qui traversent une épreuve de vie, une fragilité du cœur, une fatigue du corps ou qui veulent simplement être entourées de douceur. Offrez-vous une pause pour vous sentir portée, soutenue, dorlotée, regardée, aimée — pour vous reposer dans les bras de quelqu'un qui ne vous veut que du bien.</p>
+          <p>J'accueille dans mes bras toutes celles qui traversent une épreuve de vie, une fragilité du cœur, une fatigue du corps ou qui veulent simplement être entourées de douceur. Offrez-vous une pause pour vous sentir portée, soutenue, dorlotée, regardée, aimée.</p>
           <p>Une invitation au réconfort et à la reconnaissance de tout ce qu'il y a de beau en vous. Un répit pour toutes les funambules de la vie.</p>
           <div class="details">
             <div><strong>Pour qui</strong>Séance individuelle avec les femmes. Accompagnement à la tendresse et à la qualité de présence d'un couple possible.</div>
             <div><strong>Avant la séance</strong>Un premier échange téléphonique est nécessaire.</div>
-            <div><strong>Déroulement</strong>Conversation, rappel du cadre non sexuel et consentement, puis câlins, caresses, bercements, enveloppements &amp; confidences du cœur à votre guise. Vos sentiments avant votre départ… jusqu'à la prochaine fois.</div>
+            <div><strong>Déroulement</strong>Conversation, rappel du cadre non sexuel et consentement, puis câlins, caresses, bercements, enveloppements et confidences du cœur à votre guise.</div>
             <div><strong>Durée</strong>1h.</div>
             <div><strong>Tarif</strong>70€ la séance, au cabinet.</div>
             <div><strong>Formation</strong>Câlinothérapie avec Fanny Gaye.</div>
@@ -284,7 +297,7 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
     </div>
   </section>
 
-  <!-- CABINET (NOUVEAU V2 — en fin de page) -->
+  <!-- CABINET -->
   <section id="cabinet">
     <div class="wrap">
       <div class="tete-section reveal">
@@ -292,23 +305,18 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
         <h2>Un espace à L'Isle-Adam</h2>
       </div>
       <div class="cabinet-grid reveal">
-        <div>
-          <div class="cabinet-photos">
-            <figure>
-              <div class="attente">Salle d'attente —<br>photo à fournir</div>
-            </figure>
-            <figure>
-              <div class="attente">Cabinet —<br>photo à fournir</div>
-            </figure>
-          </div>
-        </div>
         <div class="cabinet-texte">
-          <p>Le Studio des Émotifs vous accueille au cœur de L'Isle-Adam, dans un espace pensé pour le calme et la douceur. Chaque séance se déroule dans un cadre confidentiel et apaisant, propice à la rencontre et au lien.</p>
+          <p>Le Studio des Émotifs vous reçoit au 1 A rue Mellet, au cœur de L'Isle-Adam. Le cabinet est ouvert le samedi et le dimanche, de 9h à 18h. Chaque séance se déroule dans un cadre confidentiel, pensé pour que vous vous sentiez accueillie, écoutée, en sécurité.</p>
+          <p>La prise de rendez-vous se fait par email ou par message privé sur Instagram. Il n'y a pas de réservation en ligne : chaque accompagnement commence par un échange, pour que nous prenions le temps de nous rencontrer avant de nous engager.</p>
           <div class="cabinet-infos">
             <div><strong>Adresse</strong>1 A rue Mellet<br>L'Isle-Adam, Val d'Oise</div>
             <div><strong>Horaires</strong>Samedi et dimanche<br>9h – 18h</div>
-            <div><strong>Rendez-vous</strong>Par email ou DM Instagram<br>Pas de réservation en ligne</div>
+            <div><strong>Contact</strong>le.studio.des.emotifs@gmail.com<br>@le.studio.des.emotifs</div>
           </div>
+        </div>
+        <div class="cabinet-photos">
+          <figure><div class="attente">Salle d'attente</div></figure>
+          <figure><div class="attente">Espace de consultation</div></figure>
         </div>
       </div>
     </div>
@@ -334,8 +342,8 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
             <label>Quel accompagnement vous intéresse ?
               <select name="Accompagnement">
                 <option value="" disabled selected>Choisissez un accompagnement</option>
-                <option value="Haptonomie">Haptonomie — méthode Hapto bien-naître®</option>
-                <option value="Réflexologie">Réflexologie Bébé émotionnelle® et Enfant</option>
+                <option value="Haptonomie">Haptonomie — méthode Hapto bien-naître</option>
+                <option value="Réflexologie">Réflexologie Bébé émotionnelle et Enfant</option>
                 <option value="Câlinothérapie">Câlinothérapie</option>
                 <option value="Autre">Autre / Je ne sais pas encore</option>
               </select>
@@ -348,9 +356,8 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
           <div class="infos-contact">
             <p><strong>Email</strong><a href="mailto:le.studio.des.emotifs@gmail.com">le.studio.des.emotifs@gmail.com</a></p>
             <p><strong>Instagram</strong><a href="https://www.instagram.com/le.studio.des.emotifs?igsh=ZzFmMzZrejA4aTU3" target="_blank" rel="noopener">@le.studio.des.emotifs</a></p>
-            <p><strong>Adresse du cabinet</strong>1 A rue Mellet, L'Isle-Adam, Val d'Oise</p>
+            <p><strong>Adresse</strong>1 A rue Mellet, L'Isle-Adam, Val d'Oise</p>
             <p><strong>Horaires</strong>Samedi et dimanche, de 9h à 18h</p>
-            <p class="note">Les avis Google pourront être intégrés ici, avec affichage limité à une sélection choisie par la praticienne.</p>
           </div>
         </div>
       </div>
@@ -360,37 +367,82 @@ input:focus,textarea:focus,select:focus{transition:border-color .5s}
 
 <footer>
   <div class="wrap pied">
-    <div>Le Studio des Émotifs — L'Isle-Adam, Val d'Oise · www.studiodesemotifs.com</div>
-    <div>SIRET : à compléter · CGV : à compléter</div>
-    <div>© Le Studio des Émotifs — Tous droits réservés.</div>
+    <div>Le Studio des Émotifs — L'Isle-Adam, Val d'Oise</div>
+    <div>© Le Studio des Émotifs</div>
   </div>
 </footer>
 
 <script>
+// ——— Emotional Current Canvas ———
 (function(){
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed') })
-  },{threshold:.12,rootMargin:'0px 0px -40px 0px'})
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+  const canvas = document.getElementById('emotionalCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W,H,scrollY=0,targetScroll=0;
+  const particles=[];
+  const NUM=30;
 
-  let ticking = false
-  window.addEventListener('scroll',()=>{
-    if(ticking) return
-    requestAnimationFrame(()=>{
-      const y = window.scrollY
-      document.querySelector('header').classList.toggle('scrolled', y > 30)
-      document.querySelectorAll('.accompagnement .visuel,.portrait-cadre').forEach(el=>{
-        const rect = el.getBoundingClientRect()
-        const vis = rect.top < window.innerHeight && rect.bottom > 0
-        if(!vis) return
-        const speed = el.closest('.accompagnement')?.classList.contains('inverse') ? 6 : -6
-        const shift = ((rect.top + rect.height/2) / window.innerHeight - .5) * speed
-        const img = el.querySelector('img')
-        if(img) img.style.transform = `translateY(${shift}px)`
-      })
-      ticking = false
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+
+  for(let i=0;i<NUM;i++){
+    particles.push({
+      x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
+      r:50+Math.random()*100,
+      hue:15+Math.random()*18,
+      alpha:.035+Math.random()*.055,
+      phase:Math.random()*Math.PI*2
     })
-    ticking = true
+  }
+
+  window.addEventListener('scroll',()=>{targetScroll=window.scrollY},{passive:true});
+
+  function draw(){
+    scrollY+=(targetScroll-scrollY)*.05;
+    ctx.clearRect(0,0,W,H);
+    const t=performance.now()*.0003;
+    for(const p of particles){
+      const angle=Math.sin(t*1.3+p.phase)*.5+Math.cos(t*.7+p.phase)*.4;
+      p.vx+=Math.cos(angle)*.02;
+      p.vy+=Math.sin(angle)*.02;
+      p.vx*=.995;p.vy*=.995;
+      p.vy-=(targetScroll-scrollY)*.00003;
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<-p.r)p.x=W+p.r;if(p.x>W+p.r)p.x=-p.r;
+      if(p.y<-p.r)p.y=H+p.r;if(p.y>H+p.r)p.y=-p.r;
+      const grad=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+      grad.addColorStop(0,`oklch(65% .14 ${p.hue} / ${p.alpha*2})`);
+      grad.addColorStop(.5,`oklch(65% .14 ${p.hue} / ${p.alpha*.7})`);
+      grad.addColorStop(1,`oklch(65% .14 ${p.hue} / 0)`);
+      ctx.fillStyle=grad;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()
+    }
+    requestAnimationFrame(draw)
+  }
+  draw()
+})();
+
+// ——— Reveal + parallax ———
+(function(){
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('revealed');obs.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  let tick=false;
+  window.addEventListener('scroll',()=>{
+    if(tick)return;
+    requestAnimationFrame(()=>{
+      document.querySelector('header').classList.toggle('scrolled',window.scrollY>40);
+      document.querySelectorAll('.accompagnement .visuel,.portrait-cadre').forEach(el=>{
+        const r=el.getBoundingClientRect();
+        if(!(r.top<window.innerHeight&&r.bottom>0))return;
+        const sp=el.closest('.accompagnement')?.classList.contains('inverse')?6:-6;
+        const sh=((r.top+r.height/2)/window.innerHeight-.5)*sp;
+        const img=el.querySelector('img');
+        if(img)img.style.transform=`translateY(${sh}px)`
+      });
+      tick=false
+    });
+    tick=true
   },{passive:true})
 })()
 </script>
